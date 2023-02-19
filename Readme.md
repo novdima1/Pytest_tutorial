@@ -7,4 +7,5 @@
 7. To create requirements.txt use: pip freeze > requirements.txt
 8. Run tests, e.g. by marker: pytest -m login
 9. or by test name: pytest -k <test_name>
-10. next
+10. Install request library: pip install requests
+11. 
