@@ -6,7 +6,7 @@ class Response:
 
     def __init__(self, response):
         self.response = response
-        self.response_json = response.json()
+        self.response_json = response.json().get("data")
         self.response_status = response.status_code
 
     def validate(self, schema):
@@ -25,12 +25,5 @@ class Response:
         return self
 
     def print_response_json(self):
-        for post in self.response_json:
-            print("\n", post)
-        assert self.response_json[1] == {'id': 2, 'title': 'Post 2'}
-        # for k in self.response_json[1]:
-        print(self.response_json[1].values())
-        assert "Post 2" in self.response_json[0].values(), f"\nExpected: Post 2, \nActual " \
-                                                           f"{self.response_json[0].values()}," \
-                                                           f" \n{GlobalErrorMessages.WRONG_POST_TITLE.value}"
-
+        for obj in self.response_json:
+            print(obj)
