@@ -8,4 +8,14 @@
 8. Run tests, e.g. by marker: pytest -m login
 9. or by test name: pytest -k <test_name>
 10. Install request library: pip install requests
-11. 
+
+Allure:
+Add allure package to the venv:
+>>  pip install allure-pytest    
+
+Add allure results to allure_results folder
+>> pytest -v -s tests/users/test_users.py --alluredir=allure_results 
+
+Run Allure report:
+>> allure serve allure_results 
+
