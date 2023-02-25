@@ -22,11 +22,11 @@ def test_skipped(calculate):
 data = [
     (1, 2, 3),
     (1, 3, 4),
-    (1, 3, 4)
+    (1, 4, 5)
 ]
 
 
-@pytest.mark.dev
+# @pytest.mark.dev
 @pytest.mark.parametrize("n1, n2, res", data)
 def test_calculation(n1, n2, res, calculate):
     assert calculate(n1, n2) == res, "Wrong calculation"
