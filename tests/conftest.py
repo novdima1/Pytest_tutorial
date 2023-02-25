@@ -3,6 +3,7 @@ import requests
 from configuration import GOREST_USERS
 from random import randrange
 
+
 @pytest.fixture
 def get_users():
     response = requests.get(GOREST_USERS)
@@ -25,6 +26,6 @@ def _calc(a, b):
 
 @pytest.fixture
 def calculate():
-    print("Before test")
+    print("\nBefore test")
     yield _calc
-    print("Calculation is finished")
+    print("\nCalculation is finished")
