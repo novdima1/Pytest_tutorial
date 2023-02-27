@@ -1,8 +1,8 @@
 player = {
-    "account_status": "Bctive",
+    "account_status": "Active",
     "balance": 10,
     "localize": {
-        "en": {"nickname": "Solwe"},
+        "en": {"nickname": "Solwe", "countries":{"UA": 3}},
         "ru": {"nickname": "Солви"}
     },
     "avatar": "https://google.com/"
