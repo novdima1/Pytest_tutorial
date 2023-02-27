@@ -1,17 +1,32 @@
-from src.baseclasses.response import Response
-from src.pydantic_schemas.user import User
+import pytest
+from src.generators.player_localization import PlayerLocalization
+
+@pytest.mark.parametrize("status, balance, number",
+[
+    ("Asctive", 100, 1),
+    ("Inactive", -9, 2),
+    ("Deleted", 234, 3),
+    ("Banned", 1000, 4)
+])
+def test_smth(status, balance, number, get_player_generator):
+    # print(get_player_generator.set_status(status).set_balance(balance).build())
+    object_to_send = get_player_generator.update_inner_value(
+        ["loc"], PlayerLocalization("fr_FR")
+        .set_number(number).build()).build()
+    print(object_to_send)
 
 
-def test_getting_posts(get_users):
-    Response(get_users).assert_status_code(200).validate(User) # POST_SCHEMA
+@pytest.mark.parametrize("localization",
+[
+    ("AU"),
+    ("GB"),
+    ("US")
+])
+def test_localization(localization, get_player_generator):
+    # print(get_player_generator.set_status(status).set_balance(balance).build())
+    object_to_send = get_player_generator.update_inner_value(
+        ["localization", localization], PlayerLocalization("ru")
+        .build()).build()
+    print(object_to_send)
 
 
-def test_get_response_json(get_users):
-    response = Response(get_users)
-    response.print_response_json()
-
-
-def test_get_conf(get_conftest, get_rnd_number, calculate):
-    print(get_conftest)
-    print(get_rnd_number)
-    print(calculate(2, 3))
