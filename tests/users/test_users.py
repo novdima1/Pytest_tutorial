@@ -8,6 +8,7 @@ def test_getting_posts(get_users):
     Response(get_users).assert_status_code(200).validate(User) # POST_SCHEMA
 
 
+@pytest.mark.wt
 def test_get_response_json(get_users):
     response = Response(get_users)
     response.print_response_json()
@@ -26,7 +27,7 @@ data = [
 ]
 
 
-# @pytest.mark.dev
+@pytest.mark.development
 @pytest.mark.parametrize("n1, n2, res", data)
 def test_calculation(n1, n2, res, calculate):
     assert calculate(n1, n2) == res, "Wrong calculation"
