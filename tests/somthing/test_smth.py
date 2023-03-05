@@ -1,5 +1,6 @@
 import pytest
 from src.generators.player_localization import PlayerLocalization
+# from src.generators.player import *
 
 @pytest.mark.parametrize("status, balance, number",
 [
@@ -10,7 +11,7 @@ from src.generators.player_localization import PlayerLocalization
 ])
 def test_smth(status, balance, number, get_player_generator):
     # print(get_player_generator.set_status(status).set_balance(balance).build())
-    object_to_send = get_player_generator.update_inner_value(
+    object_to_send = get_player_generator.set_balance(balance).update_inner_value(
         ["loc"], PlayerLocalization("fr_FR")
         .set_number(number).build()).build()
     print(object_to_send)
